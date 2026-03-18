@@ -1,0 +1,22 @@
+@use "./utils" as *;
+
+// colors
+:root {
+  --c-terracotta-rust: #A9472C;
+  --c-sand-beige: #E6D2B5;
+  --c-ivory: #F9F0E8;
+  --c-charcoal-brown: #312926;
+  --c-olive-moss: #758353;
+  --c-black: #000000;
+  --c-white: #FFFFFF;
+  --c-sand: #D1B296;
+}
+
+// offsets
+:root {
+  --offset-main: 40px;
+
+  @include mobile() {
+    --offset-main: 16px;
+  }
+}

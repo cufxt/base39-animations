@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid/Hagrid-Medium.woff2") format("woff2"),
+    url("../fonts/Hagrid/Hagrid-Medium.ttf") format("truetype"),
+    url("../fonts/Hagrid/Hagrid-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hagrid";
+  src: url("../fonts/Hagrid/Hagrid-Regular.woff2") format("woff2"),
+    url("../fonts/Hagrid/Hagrid-Regular.ttf") format("truetype"),
+    url("../fonts/Hagrid/Hagrid-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
