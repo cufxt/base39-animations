@@ -1,9 +1,3 @@
-<template>
-  <span :class="{ dark }" class="button-inner">
-    <span class="text">{{ text }}</span>
-  </span>
-</template>
-
 <script setup lang="ts">
 interface Props {
   text: string
@@ -11,6 +5,12 @@ interface Props {
 }
 defineProps<Props>()
 </script>
+
+<template>
+  <span :class="{ dark }" class="button-inner">
+    <span class="text">{{ text }}</span>
+  </span>
+</template>
 
 <style scoped lang="scss">
 .button-inner {

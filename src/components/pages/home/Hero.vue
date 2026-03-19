@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DefaultButton from '@/components/buttons/Default.vue'
+import Tagline from '@/components/common/Tagline.vue'
 </script>
 
 <template>
@@ -26,10 +27,7 @@ import DefaultButton from '@/components/buttons/Default.vue'
       </div>
     </div>
 
-    <div class="footer">
-      <p>More than a workspace —</p>
-      <p>a place where ideas slow down, connect</p>
-    </div>
+    <Tagline :dark="true" />
   </section>
 </template>
 
@@ -46,7 +44,7 @@ import DefaultButton from '@/components/buttons/Default.vue'
   .content {
     display: flex;
     flex-direction: column;
-    width: 1100px;
+    max-width: 1100px;
 
     .title {
       width: 100%;
@@ -71,17 +69,6 @@ import DefaultButton from '@/components/buttons/Default.vue'
       display: flex;
       gap: 14px;
     }
-  }
-
-  .footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 16px;
-    line-height: 120%;
-    font-weight: 500;
-    letter-spacing: normal;
-    text-transform: capitalize;
   }
 }
 </style>
