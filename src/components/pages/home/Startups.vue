@@ -80,7 +80,7 @@ function toggleTextVisibility(visibility: boolean) {
   if (!textElements?.length) return
 
   textElements.forEach((textElement: HTMLElement) => {
-    visibility ? showText(textElement) : hideText(textElement)
+    visibility ? showText(textElement, true) : hideText(textElement)
   })
 }
 

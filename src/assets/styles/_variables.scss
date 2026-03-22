@@ -10,6 +10,10 @@
   --c-black: #000000;
   --c-white: #FFFFFF;
   --c-sand: #D1B296;
+
+  --c-line-brown: #413733;
+  --c-line-red: #D36242;
+  --c-line-grey: #5044404D;
 }
 
 // offsets
@@ -19,4 +23,11 @@
   @include mobile() {
     --offset-main: 16px;
   }
+}
+
+// z-index
+:root {
+  --z-bg: -1;
+  --z-base: 1;
+  --z-line: 5;
 }
