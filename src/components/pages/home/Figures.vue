@@ -11,6 +11,13 @@ let tl: gsap.core.Timeline
 const SCREENS_COUNT = 3
 const currentScreen = ref<number>(1)
 
+const COLORS = {
+  terracottaRust: '#A9472C',
+  sandBeige: '#E6D2B5',
+  lineRed: '#D36242',
+  lineGrey: '#5044404D',
+}
+
 function initAnimations() {
   const figuresElement = document.querySelector('section.figures')
 
@@ -23,80 +30,58 @@ function initAnimations() {
 
   if (!squareEmptyElement || !circleElement || !squareElement || !circlePath) return
 
-  const innerHeight = window.innerHeight
-
   tl = gsap.timeline({
     scrollTrigger: {
       trigger: figuresElement,
       start: 'top top',
-      end: () => `top+=${innerHeight * 2} top`,
+      end: () => `top+=${window.innerHeight * 2} top`,
       scrub: true,
     },
+    duration: 1,
   })
 
-  tl.to(
-    figuresElement,
-    {
-      '--bg-color': '#A9472C',
-      '--icon-figure-color': '#E6D2B5',
-      '--icon-svg-color': 'transparent',
-      '--line-color': '#D36242',
-    },
-    0,
-  )
-    .to(squareElement, { rotate: -45, translateX: '-100%' }, 0)
-    .to(squareEmptyElement, { rotate: 45, translateX: '100%', ease: 'none' }, 0)
+  tl.to(circleElement, { opacity: 0, duration: 0.1 }, 0)
+    .to(circlePath, { opacity: 1, duration: 0.001 }, 0.1)
+    .to(squareElement, { rotate: -45, translateX: '-100%', duration: 0.5 }, 0)
+    .to(squareEmptyElement, { rotate: 45, translateX: '100%', duration: 0.5 }, 0)
+    .to(squareElement, { opacity: 0, duration: 0.001 }, 0.5)
+    .set(figuresElement, { '--icon-svg-color': COLORS.sandBeige }, 0.5)
 
-  tl.fromTo(
-    figuresElement,
-    { '--icon-svg-color': '#E6D2B5' },
-    { '--icon-svg-color': '#A9472C' },
-    '50%',
-  )
     .to(
       figuresElement,
       {
-        '--bg-color': '#E6D2B5',
-        '--icon-figure-color': '#A9472C',
-        '--text-color': '#A9472C',
-        '--line-color': '#5044404D',
+        '--bg-color': COLORS.terracottaRust,
+        '--icon-figure-color': COLORS.sandBeige,
+        '--line-color': COLORS.lineRed,
+        duration: 0.1,
       },
-      '50%',
+      0.4,
     )
-    .to(circlePath, { scale: 0, ease: 'power3.in' }, '50%')
-    .to(squareEmptyElement, { scaleX: 0.2, skewY: 55, rotate: 37 }, '50%')
-    .to(squareEmptyElement, { scaleY: 1.5 }, '50%') //TODO sync
 
-  gsap.set(figuresElement, { '--icon-svg-color': 'transparent' })
+    .to(circlePath, { scale: 0, ease: 'power3.in', duration: 0.3 }, 0.5)
+    .to(squareEmptyElement, { scaleX: 0.2, skewY: 55, rotate: 37, duration: 0.3 }, 0.5)
+    .to(squareEmptyElement, { scaleY: 1.5, duration: 0.2 }, 0.8)
 
-  gsap.to(circleElement, {
-    opacity: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: figuresElement,
-      start: 'top top',
-      end: `+=30%`,
-      scrub: true,
-      onLeave: () => gsap.set(circlePath, { opacity: 1 }),
-      onEnterBack: () => gsap.set(circlePath, { opacity: 0 }),
-    },
-  })
-
-  ScrollTrigger.create({
-    trigger: figuresElement,
-    start: 'top top',
-    end: '+=100%',
-    onLeave: () => gsap.set(squareElement, { opacity: 0 }),
-    onEnterBack: () => gsap.set(squareElement, { opacity: 1 }),
-  })
+    .to(
+      figuresElement,
+      {
+        '--bg-color': COLORS.sandBeige,
+        '--icon-svg-color': COLORS.terracottaRust,
+        '--icon-figure-color': COLORS.terracottaRust,
+        '--text-color': COLORS.terracottaRust,
+        '--line-color': COLORS.lineGrey,
+        duration: 0.1,
+      },
+      0.9,
+    )
 
   for (let i = 0; i < SCREENS_COUNT; i++) {
     const screen = i + 1
 
     ScrollTrigger.create({
       trigger: figuresElement,
-      start: () => `top+=${innerHeight * i} top`,
-      end: () => `top+=${innerHeight * (i + 1)} top`,
+      start: () => `top+=${window.innerHeight * i} top`,
+      end: () => `top+=${window.innerHeight * (i + 1)} top`,
       onEnter: () => {
         if (screen === 1) return
 
