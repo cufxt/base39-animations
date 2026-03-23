@@ -23,6 +23,10 @@ defineProps<Props>()
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
 
+  @include mobile() {
+    width: 100%;
+  }
+
   .text {
     font-size: 14px;
     line-height: 100%;
@@ -30,6 +34,10 @@ defineProps<Props>()
     letter-spacing: normal;
     text-transform: capitalize;
     color: var(--btn-default-text-color, var(--c-charcoal-brown));
+
+    @include mobile() {
+      line-height: 120%;
+    }
   }
 
   &.dark {

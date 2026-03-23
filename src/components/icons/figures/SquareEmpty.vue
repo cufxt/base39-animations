@@ -26,6 +26,11 @@ svg {
   transform-origin: center center;
   background-color: var(--icon-svg-color, transparent);
   z-index: calc(var(--z-line) + 1);
+
+  @include mobile() {
+    width: 88px;
+    height: 88px;
+  }
 }
 
 path {

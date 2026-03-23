@@ -160,6 +160,10 @@ onUnmounted(() => {
       padding: var(--offset-main);
       color: var(--text-color);
 
+      @include mobile() {
+        padding: 25px var(--offset-main) 27px;
+      }
+
       .header {
         .label {
           font-size: 30px;
@@ -167,6 +171,10 @@ onUnmounted(() => {
           line-height: 120%;
           letter-spacing: normal;
           text-transform: capitalize;
+
+          @include mobile() {
+            font-size: 22px;
+          }
         }
 
         .number {
@@ -177,6 +185,12 @@ onUnmounted(() => {
           font-weight: 500;
           line-height: normal;
           letter-spacing: normal;
+
+          @include mobile() {
+            top: 10px;
+            right: 10px;
+            font-size: 130px;
+          }
         }
       }
 
@@ -197,11 +211,20 @@ onUnmounted(() => {
         width: 420px;
         text-transform: capitalize;
 
+        @include mobile() {
+          width: 270px;
+          gap: 14px;
+        }
+
         .title {
           font-size: 22px;
           font-weight: 500;
           line-height: 150%;
           letter-spacing: normal;
+
+          @include mobile() {
+            font-size: 18px;
+          }
         }
 
         .description {
@@ -209,6 +232,10 @@ onUnmounted(() => {
           font-weight: 500;
           line-height: 150%;
           letter-spacing: normal;
+
+          @include mobile() {
+            font-size: 14px;
+          }
         }
       }
     }

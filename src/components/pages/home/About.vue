@@ -41,9 +41,17 @@ import DefaultButton from '@/components/buttons/Default.vue'
   background-color: var(--c-sand-beige);
   overflow-x: clip;
 
+  @include mobile() {
+    padding: 130px var(--offset-main) 28px;
+  }
+
   .header {
     position: relative;
     margin-bottom: 102px;
+
+    @include mobile() {
+      margin-bottom: 113px;
+    }
 
     .title {
       font-size: 35px;
@@ -57,7 +65,16 @@ import DefaultButton from '@/components/buttons/Default.vue'
 
         &:first-child {
           text-indent: 410px;
+
+          @include mobile() {
+            text-indent: 250px;
+          }
         }
+      }
+
+      @include mobile() {
+        font-size: 20px;
+        line-height: 170%;
       }
     }
 
@@ -70,6 +87,12 @@ import DefaultButton from '@/components/buttons/Default.vue'
       font-weight: 500;
       letter-spacing: normal;
       text-transform: capitalize;
+
+      @include mobile() {
+        left: 1px;
+        top: -58px;
+        font-size: 16px;
+      }
     }
   }
 
@@ -78,11 +101,29 @@ import DefaultButton from '@/components/buttons/Default.vue'
     justify-content: space-between;
     align-items: end;
 
+    @include mobile() {
+      flex-direction: column;
+      align-items: normal;
+      justify-content: normal;
+    }
+
     .image-wrapper {
       position: relative;
       width: 265px;
       height: 263px;
       margin-bottom: 1px;
+
+      @include mobile() {
+        width: 100%;
+        height: auto;
+        margin-bottom: 39px;
+      }
+
+      img {
+        @include mobile() {
+          position: static;
+        }
+      }
     }
 
     .info {
@@ -91,6 +132,10 @@ import DefaultButton from '@/components/buttons/Default.vue'
       display: flex;
       flex-direction: column;
       width: 522px;
+
+      @include mobile() {
+        width: 100%;
+      }
 
       .description {
         margin-bottom: 24px;
@@ -103,6 +148,10 @@ import DefaultButton from '@/components/buttons/Default.vue'
 
       .button {
         width: fit-content;
+
+        @include mobile() {
+          width: 100%;
+        }
       }
     }
   }

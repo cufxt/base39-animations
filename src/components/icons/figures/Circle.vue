@@ -12,6 +12,11 @@
 svg {
   width: 179px;
   height: 179px;
+
+  @include mobile() {
+    width: 88px;
+    height: 88px;
+  }
 }
 
 path {

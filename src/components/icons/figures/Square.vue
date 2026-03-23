@@ -11,6 +11,11 @@ svg {
   width: 179px;
   height: 179px;
   transform-origin: center center;
+
+  @include mobile() {
+    width: 88px;
+    height: 88px;
+  }
 }
 
 path {

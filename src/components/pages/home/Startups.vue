@@ -23,7 +23,8 @@ function initMaskAnimation() {
 
   if (!innerElement) return
 
-  const maskSize = `${window.innerWidth * 1.1}px auto`
+  const diagonal = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2)
+  const maskSize = `${diagonal}px auto`
 
   gsap.to(innerElement, {
     maskSize,
@@ -31,7 +32,7 @@ function initMaskAnimation() {
     scrollTrigger: {
       trigger: startupsElement,
       start: 'top top',
-      end: 'bottom-=600px bottom',
+      end: `top+=${window.innerHeight} top`,
       scrub: true,
       onLeave: () => {
         setContentVisibility(true)
@@ -174,8 +175,9 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .startups {
   position: relative;
-  height: calc(200vh + 600px);
+  height: 230vh;
   background-color: var(--c-terracotta-rust);
+  overflow-x: clip;
 
   .inner {
     position: sticky;
@@ -207,6 +209,10 @@ onUnmounted(() => {
     padding: 35px var(--offset-main);
     pointer-events: none;
 
+    @include mobile() {
+      padding: 18px var(--offset-main) 15px;
+    }
+
     .content-footer {
       --btn-default-width: 300px;
       --btn-default-bg-color: var(--c-ivory);
@@ -215,11 +221,22 @@ onUnmounted(() => {
       align-items: end;
       justify-content: space-between;
 
+      @include mobile() {
+        flex-direction: column;
+        align-items: normal;
+        justify-content: normal;
+        gap: 43px;
+      }
+
       .info {
         display: flex;
         flex-direction: column;
         max-width: 383px;
         color: var(--c-ivory);
+
+        @include mobile() {
+          max-width: unset;
+        }
 
         .title {
           margin-bottom: 22px;
@@ -227,6 +244,12 @@ onUnmounted(() => {
           font-weight: 500;
           line-height: 130%;
           letter-spacing: normal;
+
+          @include mobile() {
+            margin-bottom: 17px;
+            max-width: 320px;
+            font-size: 25px;
+          }
         }
 
         .description {

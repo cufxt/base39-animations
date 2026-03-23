@@ -27,7 +27,7 @@ import Tagline from '@/components/common/Tagline.vue'
       </div>
     </div>
 
-    <Tagline :dark="true" />
+    <Tagline :dark="true" class="tagline" />
   </section>
 </template>
 
@@ -37,14 +37,24 @@ import Tagline from '@/components/common/Tagline.vue'
   flex-direction: column;
   justify-content: space-between;
   padding: 116px var(--offset-main) 25px;
-  height: 100vh;
+  min-height: 100vh;
   background: url('@/assets/images/pages/home/hero/bg.webp') no-repeat center;
   background-size: cover;
+
+  @include mobile() {
+    padding: 91px var(--offset-main) 30px;
+    gap: 60px;
+  }
 
   .content {
     display: flex;
     flex-direction: column;
     max-width: 1100px;
+
+    @include mobile() {
+      max-width: unset;
+      order: 1;
+    }
 
     .title {
       width: 100%;
@@ -54,6 +64,14 @@ import Tagline from '@/components/common/Tagline.vue'
       font-weight: 500;
       line-height: 130%;
       letter-spacing: normal;
+      text-transform: capitalize;
+
+      @include mobile() {
+        margin-bottom: 16px;
+        text-indent: 84px;
+        font-size: 35px;
+        line-height: 120%;
+      }
     }
 
     .description {
@@ -63,12 +81,28 @@ import Tagline from '@/components/common/Tagline.vue'
       font-weight: 400;
       line-height: 150%;
       text-transform: capitalize;
+
+      @include mobile() {
+        width: auto;
+        margin-bottom: 37px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 150%;
+      }
     }
 
     .buttons {
       display: flex;
       gap: 14px;
+
+      @include mobile() {
+        flex-direction: column;
+      }
     }
+  }
+
+  .tagline {
+    order: 0;
   }
 }
 </style>

@@ -24,8 +24,26 @@ defineProps<Props>()
   text-transform: capitalize;
   color: var(--c-ivory);
 
+  @include mobile() {
+    flex-direction: column;
+    gap: 12px;
+    font-size: 14px;
+  }
+
   &.dark {
     color: var(--c-charcoal-brown);
+  }
+
+  p {
+    @include mobile() {
+      &:first-child {
+        align-self: flex-start;
+      }
+
+      &:last-child {
+        align-self: flex-end;
+      }
+    }
   }
 }
 </style>
